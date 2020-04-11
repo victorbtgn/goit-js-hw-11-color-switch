@@ -5,8 +5,7 @@ const bodyRef = document.querySelector('body');
 startBtnRef.addEventListener('click', onStart);
 stopBtnRef.addEventListener('click', onStop);
 
-// startBtnRef.setAttribute('disabled', 'true');
-stopBtnRef.setAttribute('disabled', 'false');
+stopBtnRef.setAttribute('disabled', 'true');
 
 const colors = [
   '#FFFFFF',
