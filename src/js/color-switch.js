@@ -3,6 +3,10 @@ const stopBtnRef = document.querySelector('button[data-action="stop"]');
 const bodyRef = document.querySelector('body');
 
 startBtnRef.addEventListener('click', onStart);
+stopBtnRef.addEventListener('click', onStop);
+
+// startBtnRef.setAttribute('disabled', 'true');
+stopBtnRef.setAttribute('disabled', 'false');
 
 const colors = [
   '#FFFFFF',
@@ -19,12 +23,12 @@ const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const index = () => randomIntegerFromInterval(colors.length, -1);
+const index = () => randomIntegerFromInterval(0, colors.length - 1);
 
 function onStart() {
+  startBtnRef.setAttribute('disabled', 'true');
+  stopBtnRef.removeAttribute('disabled');
   timerId = setInterval(addBgColor, 1000);
-  startBtnRef.removeEventListener('click', onStart);
-  stopBtnRef.addEventListener('click', onStop);
 }
 
 function addBgColor() {
@@ -32,7 +36,7 @@ function addBgColor() {
 }
 
 function onStop() {
+  stopBtnRef.setAttribute('disabled', 'true');
+  startBtnRef.removeAttribute('disabled');
   clearInterval(timerId);
-  startBtnRef.addEventListener('click', onStart);
-  stopBtnRef.removeEventListener('click', onStop);
 }
